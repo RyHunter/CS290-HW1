@@ -1,9 +1,3 @@
-/*Ekaterina Kalashnikova
- * CS290 HW1
- * Oct 23 2016
- */
-
-
 function Automobile(year, make, model, type)
 {
 	this.year = year;
