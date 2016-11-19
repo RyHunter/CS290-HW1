@@ -1,0 +1,83 @@
+.head
+{
+	background-color: #666666;
+	color: white;
+	word-spacing: 0.2em;
+	letter-spacing: -0.1em;
+	position: fixed;
+	margin:0.9em 0.9em 0.5em 0.4em;
+	padding: 0.3em;
+	font-family: "Times New Roman", Times, serif;
+
+}
+
+body
+{
+	background-color: #666666;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 130%;
+	color: white;
+	margin:0.9em 0.9em 0.5em 0.4em;
+}
+
+.links
+{
+	color: white;
+	border-collapse: collapse;
+	margin:10px;
+	padding: 20px 20px 20px 300px;
+	
+}
+
+
+a:link
+{
+	color:#FFE4C4;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color:#FFE4C4;
+	text-decoration: none;
+}
+
+
+a:hover
+{
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}
+
+.paragraph
+{
+	text-align: left;
+	margin: 5em 2em 2em 20em;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 120%;
+
+}
+
+.output
+{
+	width: 400px;
+	height: 400px;
+	overflow: scroll;
+
+}
+
+hr
+{
+	color: #FFE4C4;
+	display: block;
+
+}
+
+.codes
+{
+	color: #FFE4C4;
+
+
+}
+

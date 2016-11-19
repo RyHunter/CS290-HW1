@@ -1,0 +1,214 @@
+<!Doctype html>
+<html>
+<head>
+<link rel=stylesheet href="stylesheet.css" type="text/css"/>
+<h1 class = "head" align = "left">Website Keyword analysis<br>using IBM Watson<br> AlchemyLanguage API<br><br>How To Guide</h1>
+
+</head>
+<body>
+<div class = "paragraph">
+<br>
+<hr><hr>
+<br>World Wide Web is full of information. This information is shared on image boards, in forums, and aggregator websites.  
+<h3>Most data on the internet is unstructured. </h3><br>Unstructured data is easy for humans to understand but hard for computers to interpret. This data, however, can help answer questions, solve problems, and provide important insights. <a href = "http://www.ibm.com/us-en/">International Business Machines Corporation </a>or IBM is an American technology company that is using machine learning to extract meaningful information from unstructured data with a suite of APIs and solutions termed <a href="https://www.ibm.com/marketplace/collections/get-started-with-watson/?lnk=ushpv18ce3&lnk2=learn">Watson</a>. <a href="https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview">Bluemix</a> is IBM's cloud computing platform that allows developers to quickly and easily create and manage Watson applications.<br> <br>
+<a href="https://alchemy-language-demo.mybluemix.net/">AlchemyLanguage</a> is one of these APIs. It analyzes interactions between computers and human languages. Click <a href="https://alchemy-language-demo.mybluemix.net/">here</a> for the official documentation. In this guide, we will get up and running with Bluemix and learn how to use AlchemyLanguage.
+<br><br>
+<hr><hr>
+<h4>AlchemyLanguage API can do lots of things. For example, it can analyze web pages and get relevant keywords from their embedded text. Let's learn to do just that.</h4>
+<h5>Create an API</h5>
+1. We will be using Bluemix to create and host the application. If you don't have an account, you can click <a href="https://console.ng.bluemix.net/registration/">here</a> to create one.
+<ul>
+<li>Enter all required info. Make sure to use your real email address.</li>
+<li>Bluemix will give you a 30 day free trial.</li>
+<ul><li>It won't ask for a credit card when you first sign up.</li> </ul>
+</ul>
+<br>
+<img src = "signup.png" alt="Sign Up" style="width:900px;height:300px;">
+<br><br>
+2. Once you've entered all the info, follow a link sent to your email to confirm the account. Once you do that, log in and follow prompts to set Bluemix up.
+<br><br>
+<img src = "setup.png" alt="Create Account" style="width:400px;height:200px;">
+<br><br>
+3. Next, search the vast list of APIs and services offered and locate AlchemyLanguage.
+<br><br>
+<img src = "find.png" alt="Find" style="width:800px;height:250px;">
+<br>
+<br>
+4. Give your new app a unique name, choose your payment plan and click "create" to make a new instance of AlchemyLanguage.
+<br><br>
+<img src = "create.png" alt="Create" style="width:600px;height:250px;">
+<br><br>
+5. Head over to the dashboard in the upper left corner of the window and choose "services" to view apps you have created. Here you can obtain your credentials.
+<br>
+<ul>
+<li>Remember your API key as it will be vital for getting our application working.</li>
+<li>Make sure to keep your key safe and not share it publicly.</li>
+<li>The "url" is important as well - this is the address we will be sending our API calls to.</li>
+</ul>
+<br><br>
+<img src = "cred2.png" alt="Create" style="width:600px;height:250px;">
+<br><br>
+<hr><hr>
+<h4>AlchemyLanguage can analyze text, HTML documents, and content of sites. We can use it's algorithms to solve real life problems and enhance the lives of people. In this example, let's analyze some news sources to extract keywords. With these key words we can better tailor material and make it more relevant to our consumer base. </h4>
+<h5>Using the API</h5>
+To get the keywords, we will be sending a simple GET request to the endpoint provided by the API.
+<br>
+<ul>
+<li>A URL endpoint is an address where the service can be accessed by a client application.</li>
+<li>In our example above, the URL endpoint is<div class="codes"> "http://gateway-a.watsonplatform.net/calls/"</div></li>
+</ul>
+<br>
+<img src = "404.png" alt="404" style="width:2;height:100px;">
+<br><br>
+However, this URL is no good to us because it needs a few additional arguments.
+<br>
+The kind of arguments we pass will depend on what exactly we want our API to do.
+<br>
+Let's keep it simple!
+<br>
+<ul>
+<li>We want AlchemyLanguage to extract keywords from a URL.</li>
+<li>Remember that API key from earlier? Append it to our request in order to use the service.</li>
+<li>Our output should be in human-readable format. Since we're displaying keywords, attribute - value pairs will be perfect. </li>
+</ul>
+<br>
+With all of this in mind, we're ready to finish the string now!
+<br>
+
+<ul>
+
+<li>
+<div class="codes">url/URLGetRankedKeywords</div> 
+<ul>
+<li>This is a function to grab and display keywords from a specific webpage.</li>
+<li>AlchemyLanguage allows you to use other functions to get different results.</li>
+<ul>
+<li>For example, the function below will output relevant keywords, entities, and  concepts.</li>
+<li>It can also label the page by giving it's taxonomy.</li>
+<li><div class="codes">url/URLGetCombinedData<div></li>
+<li>More options are available in <a href="http://www.ibm.com/watson/developercloud/alchemy-language/API/v1/">the official documentation</a>.</li></ul></ul>
+</li>
+
+
+<li>
+<div class="codes">url=your-public-page.com</div>
+<ul>
+<li>This is exactly what it looks like: the address of the page we want to analyze.</li>
+<li>Keep in mind that AlchemyLanguage can only access public pages.</li>
+</ul>
+</li>
+
+
+<li>
+<div class="codes">outputMode=json</div>
+<ul>
+<li>Set outputMode to return data in JSON format. This will make output nice and easy to interpret.</li>
+<ul><li>JSON is a format that transmits data objects consisting of atribute-value pairs.</li>
+<li>You could set this to something else. You could use "text" to get output as an XML tree, for example.</li> 
+</ul>
+</ul>
+</li>
+
+<li>
+<div class="codes">APIkey=[your-API-key]</div>
+<ul>
+<li>This is your super secret API key that enables everything to work.</li>
+<li>Every time a new user creates an instance of AlchemyLanguage, they get a unique key.</li>
+</ul>
+</li>
+</ul>
+<hr><hr>
+<h4>Let's look at another route for accessing AlchemyLanguage. This time, let's learn how to use AJAX to place the same request.</h4>
+<h5>The JavaScript way to use an API</h5>
+1. Create a new HTML document.
+<ul>
+<li>Our document needs a <u>form field</u> to submit the data and a <u>result field</u> to display returned information.</li>
+</ul>
+<br>
+<img src = "html.png" alt="html" style="width:500px;height:300px;">
+<br><br>
+The result is a simple HTML page. 
+<ul><li>We could use CSS to make the page pretty but we won't worry about that in this guide.</li></ul> 
+<br>
+<img src = "htmlresult.png" alt="html" style="width:400px;height:150px;">
+<br>
+<br>
+2. In our JavaScript document, we want to link our HTML "submit" button to a request we send to our API. 
+<br>
+<ul>
+<li>Add an event listener that will respond as soon as the page content is loaded</li>
+<br>
+<img src = "event.png" alt="event" style="width:460px;height:40px;">
+<br>
+<li>Create a function to submit the url when the button is clicked</li>
+<br>
+<img src = "bind.png" alt="bind" style="width:500px;height:200px;">
+<br><br>
+<ul><li>This function will allow our HTML 'submit' button to send the request to AlchemyLanguage</li>
+<li>Use event.preventDefault() to prevent the browser from refreshing after the call</li>
+<br>
+</ul> 
+<li>Now, it's time to make our function retrieve some actual data.</li>
+<ul>
+<li>Create a variable to hold your developer key.</li>
+<li>Create a new HTTP request.</li>
+<ul><li>Use var req = new XMLHttpRequest()</li></ul>
+<li>Open that request by concatenating all the parameters of the address.</li>
+<ul><li><div class = "codes">req.open('POST', 'https://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords?url=' + payload + '&outputMode=json&APIkey=' + APIKey, false)</div></li></ul>
+<li>Send the request.</li>
+<li>Parse and format the response.</li>
+</ul>
+
+<br><br>
+<img src = "fullreq.png" alt="fullrequest" style="width:600px;height:300px;">
+<br><br>
+
+</ul>
+
+
+
+<hr><hr>
+<h4>Looks like we're all set to review the key words. A neat thing about AlchemyLanguage is that it is very easy to interpret the output. This makes it a versatile tool that helps in understanding social media, gauging reactions to events, and evaluating products.</h4>
+<h5>Interpret results</h5>
+Let's have a look at key words in a BBC article about JK Rowling's prequel to Harry Potter. 
+<br>
+<br>
+1. Input the method, url, and developer key.
+<br><br>
+<ul><li>
+<div class="codes">
+https://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords?url=http://www.bbc.com/culture/story/20161117-film-review-is-fantastic-beasts-a-rowling-triumph&outputMode=json&apikey=your-API-key
+</div></ul></li>
+<br><br>
+2. Let's take a closer look at the response.
+<br> <br>
+<img src = "output.png" alt="output" style="width:800px;height:500px;">
+
+<br><br>
+What we have here is:
+<ul> 
+<li>"status: OK" - our request went through.</li> 
+<li>"usage" - a terms and conditions disclaimer.</li>
+<li>"url" - the address we entered.</li>
+<li>"language" - language of the website we're analyzing.</li>
+<li>"keywords" is the list of keywords and their relevance from 1 to 0. Closer to 1 is more relevant.</li> 
+</ul>
+<br>
+Congratulations, now we have a list of potential key words. We can pass this information right along to whoever is in charge of content generation, marketing, or perhaps, SEO. 
+<br>  
+<br>
+Thanks for learning the methods
+<br>
+<br>
+Hope you found this guide quite elementary
+<br><br>
+Cheers!
+<br> 
+ 
+</body>
+</html>
+
+
+
+
+
